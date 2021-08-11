@@ -15,9 +15,9 @@ const CalendarData = ({ calendarContent }: calendarContentProps) => {
         <td>
             <p>{calendarContent.day}</p>
             <ul>
-                {calendarContent.list.map((item: { text: string; cn: string }) => (
+                {/* {calendarContent.list.map((item: { text: string; cn: string }) => (
                     <CalendarItem text={item.text} cn={item.cn} />
-                ))}
+                ))} */}
             </ul>
         </td>
     )

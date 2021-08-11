@@ -72,9 +72,9 @@ const Month = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {calendarContents.map((calendarRowContents) => (
+                    {/* {calendarContents.map((calendarRowContents) => (
                         <CalendarRow calendarRowContents={calendarRowContents} />
-                    ))}
+                    ))} */}
                 </tbody>
             </table>
         </>

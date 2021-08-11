@@ -13,9 +13,9 @@ type calendarRowProps = {
 const CalendarRow = ({ calendarRowContents }: calendarRowProps) => {
     return (
         <tr>
-            {calendarRowContents.map((calendarContent) => (
+            {/* {calendarRowContents.map((calendarContent) => (
                 <CalendarData calendarContent={calendarContent} />
-            ))}
+            ))} */}
         </tr>
     )
 }

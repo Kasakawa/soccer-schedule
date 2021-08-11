@@ -8,18 +8,17 @@ export default function Home() {
     const [games, setGames] = useState()
 
     const [popuped, setPopuped] = useState(false)
-    const popupedContent = (id, title, games) => {
+    const popupedContent = (): void => {
         setPopuped(!popuped)
-        console.log(id)
-        setTitle(title)
-        setGames(games)
+        // setTitle(title)
+        // setGames(games)
     }
 
     return (
         <>
             <h1 className={homeStyles.h1}>8/8 ~ 8/15</h1>
-            <Table onClick={popupedContent} />
-            {popuped ? <Popup onClick={popupedContent} title={title} games={games} /> : null}
+            <Table />
+            {popuped ? <Popup onClick={popupedContent} /> : null}
         </>
     )
 }

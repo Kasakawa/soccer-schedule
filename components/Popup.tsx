@@ -1,12 +1,10 @@
-import { useState } from 'react'
 import PopupStyles from '../styles/Popup.module.css'
 
 type PopupProps = {
-    title: string
-    games: string[]
+    onClick: () => void
 }
 
-const Popup = ({ onClick, title, games }: PopupProps) => {
+const Popup = ({ onClick }: PopupProps) => {
     const popupContents = [
         { title: 'Jリーグ', games: ['C大阪', '神戸'] },
         { title: '天皇杯', games: ['川崎'] },
@@ -17,7 +15,7 @@ const Popup = ({ onClick, title, games }: PopupProps) => {
             <div className={PopupStyles.back} onClick={onClick}></div>
             <div className={PopupStyles.popup}>
                 <ul>
-                    {popupContents.map((content) => (
+                    {/* {popupContents.map((content) => (
                         <li>
                             <h1>{content.title}</h1>
                             <ul>
@@ -26,7 +24,7 @@ const Popup = ({ onClick, title, games }: PopupProps) => {
                                 ))}
                             </ul>
                         </li>
-                    ))}
+                    ))} */}
                 </ul>
             </div>
         </>
