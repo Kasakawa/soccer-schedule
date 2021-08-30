@@ -1,9 +1,16 @@
+import { useState } from 'react'
 import tableStyles from '../styles/Table.module.css'
+import TableData from './TableData'
 
-const Table = () => {
-    // theadの最初の曜日を定義すると自動で更新されます
-    const startDay = 8
+type onChangeProps = {
+    onChange: (childrenIndex: number) => void
+    activeIndex: number
+    week: string[]
+    day: number
+    getNowDate: number
+}
 
+const Table = ({ onChange, activeIndex, week, day, getNowDate }: onChangeProps) => {
     const content = [
         {
             time: 4,
@@ -13,11 +20,11 @@ const Table = () => {
             tueLeague: '',
             wedClass: '',
             wedLeague: '',
-            thuClass: 'euro',
-            thuLeague: 'SC',
-            friClass: '',
-            friLeague: '',
-            satClass: 'multi',
+            thuClass: 'international',
+            thuLeague: '欧州',
+            friClass: 'international',
+            friLeague: '欧州',
+            satClass: '',
             satLeague: '',
         },
         {
@@ -28,11 +35,11 @@ const Table = () => {
             tueLeague: '',
             wedClass: '',
             wedLeague: '',
-            thuClass: 'euro',
-            thuLeague: 'SC',
-            friClass: '',
-            friLeague: '',
-            satClass: 'multi',
+            thuClass: 'international',
+            thuLeague: '欧州',
+            friClass: 'international',
+            friLeague: 'WC',
+            satClass: '',
             satLeague: '',
         },
         {
@@ -45,8 +52,8 @@ const Table = () => {
             wedLeague: '',
             thuClass: '',
             thuLeague: '',
-            friClass: '',
-            friLeague: '',
+            friClass: 'international',
+            friLeague: '南米',
             satClass: '',
             satLeague: '',
         },
@@ -60,8 +67,8 @@ const Table = () => {
             wedLeague: '',
             thuClass: '',
             thuLeague: '',
-            friClass: '',
-            friLeague: '',
+            friClass: 'international',
+            friLeague: '南米',
             satClass: '',
             satLeague: '',
         },
@@ -90,8 +97,8 @@ const Table = () => {
             wedLeague: '',
             thuClass: '',
             thuLeague: '',
-            friClass: '',
-            friLeague: '',
+            friClass: 'international',
+            friLeague: 'WC',
             satClass: '',
             satLeague: '',
         },
@@ -105,8 +112,8 @@ const Table = () => {
             wedLeague: '',
             thuClass: '',
             thuLeague: '',
-            friClass: '',
-            friLeague: '',
+            friClass: 'international',
+            friLeague: 'WC',
             satClass: '',
             satLeague: '',
         },
@@ -120,8 +127,8 @@ const Table = () => {
             wedLeague: '',
             thuClass: '',
             thuLeague: '',
-            friClass: '',
-            friLeague: '',
+            friClass: 'international',
+            friLeague: 'WC',
             satClass: '',
             satLeague: '',
         },
@@ -135,8 +142,8 @@ const Table = () => {
             wedLeague: '',
             thuClass: '',
             thuLeague: '',
-            friClass: '',
-            friLeague: '',
+            friClass: 'international',
+            friLeague: 'WC',
             satClass: '',
             satLeague: '',
         },
@@ -150,8 +157,8 @@ const Table = () => {
             wedLeague: '',
             thuClass: '',
             thuLeague: '',
-            friClass: '',
-            friLeague: '',
+            friClass: 'international',
+            friLeague: '北中米',
             satClass: '',
             satLeague: '',
         },
@@ -167,8 +174,8 @@ const Table = () => {
             thuLeague: '',
             friClass: '',
             friLeague: '',
-            satClass: 'j',
-            satLeague: 'J',
+            satClass: '',
+            satLeague: '',
         },
         {
             time: 15,
@@ -182,8 +189,8 @@ const Table = () => {
             thuLeague: '',
             friClass: '',
             friLeague: '',
-            satClass: 'j',
-            satLeague: 'J',
+            satClass: '',
+            satLeague: '',
         },
         {
             time: 16,
@@ -236,14 +243,14 @@ const Table = () => {
             monClass: '',
             tueClass: '',
             tueLeague: '',
-            wedClass: '',
-            wedLeague: '',
-            thuClass: 'j',
-            thuLeague: 'J',
-            friClass: 'j',
-            friLeague: 'J',
-            satClass: 'j',
-            satLeague: 'J',
+            wedClass: 'j',
+            wedLeague: 'J杯',
+            thuClass: 'international',
+            thuLeague: 'アジア',
+            friClass: '',
+            friLeague: '',
+            satClass: '',
+            satLeague: '',
         },
         {
             time: 20,
@@ -251,13 +258,13 @@ const Table = () => {
             monClass: '',
             tueClass: '',
             tueLeague: '',
-            wedClass: '',
-            wedLeague: '',
-            thuClass: 'j',
-            thuLeague: 'J',
-            friClass: 'j',
-            friLeague: 'J',
-            satClass: 'multi',
+            wedClass: 'j',
+            wedLeague: 'J杯',
+            thuClass: 'international',
+            thuLeague: 'アジア',
+            friClass: '',
+            friLeague: '',
+            satClass: '',
             satLeague: '',
         },
         {
@@ -268,11 +275,11 @@ const Table = () => {
             tueLeague: '',
             wedClass: '',
             wedLeague: '',
-            thuClass: '',
-            thuLeague: '',
+            thuClass: 'international',
+            thuLeague: 'アジア',
             friClass: '',
             friLeague: '',
-            satClass: 'multi',
+            satClass: '',
             satLeague: '',
         },
         {
@@ -287,8 +294,8 @@ const Table = () => {
             thuLeague: '',
             friClass: '',
             friLeague: '',
-            satClass: 'ger',
-            satLeague: 'Bundes',
+            satClass: 'international',
+            satLeague: '欧州',
         },
         {
             time: 23,
@@ -296,14 +303,14 @@ const Table = () => {
             monClass: '',
             tueClass: '',
             tueLeague: '',
-            wedClass: '',
-            wedLeague: '',
+            wedClass: 'international',
+            wedLeague: '欧州',
             thuClass: '',
             thuLeague: '',
             friClass: '',
             friLeague: '',
-            satClass: 'multi',
-            satLeague: '',
+            satClass: 'international',
+            satLeague: '欧州',
         },
         {
             time: 24,
@@ -311,13 +318,13 @@ const Table = () => {
             monClass: '',
             tueClass: '',
             tueLeague: '',
-            wedClass: '',
-            wedLeague: '',
+            wedClass: 'international',
+            wedLeague: '欧州',
             thuClass: '',
             thuLeague: '',
             friClass: '',
             friLeague: '',
-            satClass: 'multi',
+            satClass: '',
             satLeague: '',
         },
         {
@@ -328,12 +335,12 @@ const Table = () => {
             tueLeague: '',
             wedClass: '',
             wedLeague: '',
-            thuClass: '',
-            thuLeague: '',
+            thuClass: 'international',
+            thuLeague: '欧州',
             friClass: '',
             friLeague: '',
-            satClass: 'multi',
-            satLeague: '',
+            satClass: 'international',
+            satLeague: '欧州',
         },
         {
             time: 26,
@@ -343,12 +350,12 @@ const Table = () => {
             tueLeague: '',
             wedClass: '',
             wedLeague: '',
-            thuClass: '',
-            thuLeague: '',
+            thuClass: 'international',
+            thuLeague: '欧州',
             friClass: '',
             friLeague: '',
-            satClass: 'multi',
-            satLeague: '',
+            satClass: 'international',
+            satLeague: '欧州',
         },
         {
             time: 27,
@@ -356,14 +363,14 @@ const Table = () => {
             monClass: '',
             tueClass: '',
             tueLeague: '',
-            wedClass: '',
-            wedLeague: '',
-            thuClass: '',
-            thuLeague: '',
-            friClass: 'multi',
+            wedClass: 'international',
+            wedLeague: '欧州',
+            thuClass: 'international',
+            thuLeague: '欧州',
+            friClass: '',
             friLeague: '',
-            satClass: 'esp',
-            satLeague: 'LaLiga',
+            satClass: 'international',
+            satLeague: '欧州',
         },
         {
             time: 28,
@@ -371,14 +378,14 @@ const Table = () => {
             monClass: '',
             tueClass: '',
             tueLeague: '',
-            wedClass: '',
-            wedLeague: '',
-            thuClass: '',
-            thuLeague: '',
-            friClass: 'multi',
+            wedClass: 'international',
+            wedLeague: '欧州',
+            thuClass: 'international',
+            thuLeague: '欧州',
+            friClass: '',
             friLeague: '',
-            satClass: '',
-            satLeague: '',
+            satClass: 'international',
+            satLeague: '欧州',
         },
     ]
 
@@ -386,14 +393,18 @@ const Table = () => {
         <table className={tableStyles.table}>
             <thead>
                 <tr>
-                    <th>時</th>
-                    <td>{startDay}(日)</td>
-                    <td>{startDay + 1}(月)</td>
-                    <td>{startDay + 2}(火)</td>
-                    <td>{startDay + 3}(水)</td>
-                    <td>{startDay + 4}(木)</td>
-                    <td>{startDay + 5}(金)</td>
-                    <td>{startDay + 6}(土)</td>
+                    <th></th>
+                    {week.map((date, i) => (
+                        <TableData
+                            i={i}
+                            key={i}
+                            onChange={onChange}
+                            active={i === activeIndex}
+                            today={i === getNowDate}
+                            day={day + i}
+                            date={date}
+                        />
+                    ))}
                 </tr>
             </thead>
             <tbody>
@@ -403,13 +414,29 @@ const Table = () => {
                         <td className={tableStyles[row.sunClass]}></td>
                         <td className={tableStyles[row.monClass]}></td>
                         <td className={tableStyles[row.tueClass]}></td>
-                        <td className={tableStyles[row.wedClass]}></td>
+                        <td className={tableStyles[row.wedClass]}>{row.wedLeague}</td>
                         <td className={tableStyles[row.thuClass]}>{row.thuLeague}</td>
                         <td className={tableStyles[row.friClass]}>{row.friLeague}</td>
                         <td className={tableStyles[row.satClass]}>{row.satLeague}</td>
                     </tr>
                 ))}
             </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    {week.map((date, i) => (
+                        <TableData
+                            i={i}
+                            key={i}
+                            onChange={onChange}
+                            active={i === activeIndex}
+                            today={i === getNowDate}
+                            day={day + i}
+                            date={date}
+                        />
+                    ))}
+                </tr>
+            </tfoot>
         </table>
     )
 }

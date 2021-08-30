@@ -1,0 +1,33 @@
+.h1 {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: 100;
+    background-color: rgba(128, 128, 128, 0.3);
+}
+.table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 372px;
+    min-height: 300px;
+}
+.table th {
+    border: 1px solid gray;
+}
+.table td {
+    border: 1px solid gray;
+    text-align: center;
+}
+.time {
+    width: 41px;
+}
+.league {
+    width: 55px;
+}
+.table ul {
+    margin: 1px;
+    padding: 0;
+}
+.table li {
+    list-style: none;
+}
