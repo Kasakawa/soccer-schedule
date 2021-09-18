@@ -6,30 +6,30 @@ type dayContentProps = {
         id: number
         time: string
         title: string
-        games: string[]
-    }[][]
+        home: string
+        away: string
+    }[][][]
     week: string[]
     day: number
+    weekSelectIndex: number
 }
 
-const Day = ({ dayContent, activeIndex, week, day }: dayContentProps) => {
+const Day = ({ dayContent, activeIndex, week, day, weekSelectIndex }: dayContentProps) => {
     return (
         <>
             <h1 className={DayStyles.h1}>
-                {day + activeIndex <= 31 ? day + activeIndex : day + activeIndex - 31}({week[activeIndex]})
+                {day + activeIndex <= 30 ? day + activeIndex : day + activeIndex - 30}({week[activeIndex]})
             </h1>
             <table className={DayStyles.table}>
                 <tbody>
-                    {dayContent[activeIndex].map((content) => (
+                    {dayContent[weekSelectIndex][activeIndex].map((content) => (
                         <tr key={content.id}>
                             <td className={DayStyles.time}>{content.time}</td>
                             <td className={DayStyles.league}>{content.title}</td>
                             <td>
-                                <ul>
-                                    {content.games.map((game) => (
-                                        <li key={game}>{game}</li>
-                                    ))}
-                                </ul>
+                                {content.home}
+                                <br />
+                                {content.away}
                             </td>
                         </tr>
                     ))}

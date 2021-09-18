@@ -1,5 +1,5 @@
 import React from 'react'
-import tableStyles from '../styles/Table.module.css'
+import WeeklyStyles from '../styles/Weekly.module.css'
 
 type tableDataProps = {
     active: boolean
@@ -11,15 +11,13 @@ type tableDataProps = {
 }
 
 const TableData = ({ active, onChange, day, date, i, today }: tableDataProps) => {
-    const classNames = today ? tableStyles.today : ''
-
     return (
         <>
             <td
-                className={`${today ? tableStyles.today : ''} ${active ? tableStyles.highlight : ''}`}
+                className={`${today ? WeeklyStyles.today : ''} ${active ? WeeklyStyles.highlight : ''}`}
                 onClick={() => onChange(i)}
             >
-                {(day <= 31 ? day : day - 31) + '(' + date + ')'}
+                {(day <= 30 ? day : day - 30) + '(' + date + ')'}
             </td>
         </>
     )
