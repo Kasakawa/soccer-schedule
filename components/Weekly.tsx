@@ -18,6 +18,8 @@ type onChangeProps = {
             thirtyMin2: string
             fifteenMin1: string
             fifteenMin2: string
+            fifteenMin3: string
+            fifteenMin4: string
         }[]
     }[][]
 }

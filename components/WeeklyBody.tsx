@@ -1,4 +1,3 @@
-import tableStyles from '../styles/Weekly.module.css'
 import WeeklyCell from './WeeklyCell'
 
 type oneWeekContentProps = {
@@ -11,6 +10,8 @@ type oneWeekContentProps = {
             thirtyMin2: string
             fifteenMin1: string
             fifteenMin2: string
+            fifteenMin3: string
+            fifteenMin4: string
         }[]
     }[]
 }
