@@ -12,3 +12,17 @@
 .selectWeek svg {
     cursor: pointer;
 }
+.button {
+    margin-top: 5px;
+    margin-right: 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.button:hover {
+    color: #059862;
+    text-decoration: underline;
+}
+.edit {
+    display: flex;
+    justify-content: end;
+}

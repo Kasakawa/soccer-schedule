@@ -24,6 +24,9 @@
 .league {
     width: max(15vw, 55px);
 }
+.delete {
+    width: 47px;
+}
 .table ul {
     margin: 1px;
     padding: 0;
