@@ -6186,7 +6186,7 @@ export default function Home() {
             break
     }
 
-    const [activeIndex, changeDay] = useState(getNowDay)
+    const [activeIndex, changeDay] = useState(0)
     const changeTab = (childrenIndex: number) => {
         changeDay(childrenIndex)
     }

@@ -16,6 +16,7 @@
 .th {
     flex: 1;
     border-left: 1px solid rgba(128, 128, 128, 0.8);
+    cursor: pointer;
 }
 .highlight {
     border: 1px solid red;
