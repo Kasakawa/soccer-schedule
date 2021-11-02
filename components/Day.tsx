@@ -11,17 +11,28 @@ type dayContentProps = {
     }[][][]
     week: string[]
     day: number
+    month: number
     weekSelectIndex: number
     onDelete: (id: number) => void
     dayModal: boolean
-    setDate: (day: number) => number
+    setDate: (day: number, month: number) => number
 }
 
-const Day = ({ dayContent, activeIndex, week, day, weekSelectIndex, onDelete, dayModal, setDate }: dayContentProps) => {
+const Day = ({
+    dayContent,
+    activeIndex,
+    week,
+    day,
+    month,
+    weekSelectIndex,
+    onDelete,
+    dayModal,
+    setDate,
+}: dayContentProps) => {
     return (
         <>
             <h1 className={DayStyles.h1}>
-                {setDate(day + activeIndex)}({week[activeIndex]})
+                {setDate(day + activeIndex, month)}({week[activeIndex]})
             </h1>
             <table className={DayStyles.table}>
                 <tbody>

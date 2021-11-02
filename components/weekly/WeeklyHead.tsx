@@ -5,15 +5,16 @@ type weeklyHeadProps = {
     onClick: (childrenIndex: number) => void
     activeIndex: number
     date: number
-    setDate: (day: number) => number
+    month: number
+    setDate: (day: number, month: number) => number
 }
 
-const WeeklyHead = ({ week, onClick, activeIndex, date, setDate }: weeklyHeadProps) => {
+const WeeklyHead = ({ week, onClick, activeIndex, date, month, setDate }: weeklyHeadProps) => {
     return (
         <div className={weeklyStyles.head}>
             <div className={weeklyStyles.headCell}></div>
             {week.map((week: string, i: number) => {
-                const strDate = setDate(date + i)
+                const strDate = setDate(date + i, month)
 
                 return (
                     <div

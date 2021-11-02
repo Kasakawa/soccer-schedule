@@ -6134,7 +6134,7 @@ export default function Home() {
     let month = nowDate.getMonth() + 1
     let day = nowDate.getDate()
 
-    const setEndOfMonth = () => {
+    const setEndOfMonth = (month: number) => {
         let x = 31
         if (month === 2) {
             x = 28
@@ -6143,47 +6143,36 @@ export default function Home() {
         }
         return x
     }
-    const setDate = (day: number) => {
-        const x = setEndOfMonth()
+    const setDate = (day: number, month: number) => {
+        const x = setEndOfMonth(month)
 
-        if (day <= 0) {
-            day = x
-        }
         if (day > x) {
             day -= x
+        }
+        if (day <= 0) {
+            day = x - day
         }
         return day
     }
     const setMonth = (day: number, month: number) => {
-        const x = setEndOfMonth()
+        const x = setEndOfMonth(month)
 
         if (day > x) {
             month += 1
         }
+        if (day <= 0) {
+            month -= 1
+        }
         return month
     }
 
-    switch (getNowDay) {
-        case 1:
-            day -= 1
-            break
-        case 2:
-            day -= 2
-            break
-        case 3:
-            day -= 3
-            break
-        case 4:
-            day -= 4
-            break
-        case 5:
-            day -= 5
-            break
-        case 6:
-            day -= 6
-            break
-        default:
-            break
+    for (let i = 1; i < 7; i++) {
+        if (getNowDay === i) {
+            day -= i
+            month = setMonth(day, month)
+            console.log(day, month)
+            day = setDate(day, month)
+        }
     }
 
     const [activeIndex, changeDay] = useState(0)
@@ -6194,10 +6183,10 @@ export default function Home() {
     // 表示される日付の計算
     day = day + weekSelectIndex * 7
 
-    const strMonth = month.toString()
-    const strDay = setDate(day).toString()
+    const strMonth = setMonth(day, month).toString()
+    const strDay = setDate(day, month).toString()
     let nextMonth = setMonth(day + 6, month)
-    let nextDay = setDate(day + 6)
+    let nextDay = setDate(day + 6, month)
     const strNextMonth = nextMonth.toString()
     const nextStrDay = nextDay.toString()
 
@@ -6285,6 +6274,7 @@ export default function Home() {
             <Weekly
                 week={week}
                 date={day}
+                month={month}
                 weeklyContents={weeklyContents[weekSelectIndex]}
                 onClick={changeTab}
                 activeIndex={activeIndex}
@@ -6295,6 +6285,7 @@ export default function Home() {
                 activeIndex={activeIndex}
                 week={week}
                 day={day}
+                month={month}
                 weekSelectIndex={weekSelectIndex}
                 onDelete={deleteDayContent}
                 dayModal={dayModal}
